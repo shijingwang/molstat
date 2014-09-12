@@ -1,0 +1,38 @@
+fpc checkmol.pas -S2 -O3 -Op3 
+rm matchmol
+ln checkmol matchmol
+SELECT db1_moldata . *
+FROM db1_molfgb, db1_moldata, db2_molfgb
+WHERE db1_molfgb.mol_id = db1_moldata.mol_id
+AND db1_molfgb.mol_id = db2_molfgb.mol_id
+AND (db3_molcfp.hfp01!=db1_molcfp.hfp01 OR
+db1_molfgb.fg01 != db2_molfgb.fg01
+OR db1_molfgb.fg02 != db2_molfgb.fg02
+OR db1_molfgb.fg03 != db2_molfgb.fg03
+OR db1_molfgb.fg04 != db2_molfgb.fg04
+OR db1_molfgb.fg05 != db2_molfgb.fg05
+OR db1_molfgb.fg06 != db2_molfgb.fg06
+OR db1_molfgb.fg07 != db2_molfgb.fg07
+OR db1_molfgb.fg08 != db2_molfgb.fg08
+OR db1_molfgb.n_1bits != db2_molfgb.n_1bits
+)
+SELECT `db1_molcfp`.* FROM `db1_molcfp`,`db3_molcfp` 
+WHERE `db1_molcfp`.mol_id=`db3_molcfp`.mol_id AND 
+(db3_molcfp.dfp01!=db1_molcfp.dfp01 OR
+ db3_molcfp.hfp01!=db1_molcfp.hfp01 OR 
+db3_molcfp.hfp02!=db1_molcfp.hfp02 OR 
+db3_molcfp.hfp03!=db1_molcfp.hfp03 OR 
+db3_molcfp.hfp04!=db1_molcfp.hfp04 OR 
+db3_molcfp.hfp05!=db1_molcfp.hfp05 OR 
+db3_molcfp.hfp06!=db1_molcfp.hfp06 OR 
+db3_molcfp.hfp07!=db1_molcfp.hfp07 OR 
+db3_molcfp.hfp08!=db1_molcfp.hfp08 OR 
+db3_molcfp.hfp09!=db1_molcfp.hfp09 OR 
+db3_molcfp.hfp10!=db1_molcfp.hfp10 OR 
+db3_molcfp.hfp11!=db1_molcfp.hfp11 OR 
+db3_molcfp.hfp12!=db1_molcfp.hfp12 OR 
+db3_molcfp.hfp13!=db1_molcfp.hfp13 OR 
+db3_molcfp.hfp14!=db1_molcfp.hfp14 OR 
+db3_molcfp.hfp15!=db1_molcfp.hfp15 OR 
+db3_molcfp.hfp16!=db1_molcfp.hfp16 OR 
+db3_molcfp.n_h1bits!=db1_molcfp.n_h1bits)
