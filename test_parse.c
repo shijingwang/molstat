@@ -7025,7 +7025,7 @@ void make_hashed_fp() {
   make_linear_frags();
   make_ring_frags();
 //  {$IFDEF extended_hfp}
-  make_branched_frags();
+//  make_branched_frags();
 //  {$ENDIF}
   // now write the output
 //  if (hfpformat == fpf_boolean) write_hfp();
